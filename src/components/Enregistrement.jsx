@@ -30,12 +30,12 @@ export default function Enregistrement() {
   };
   console.log(employeHeure);
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEmpInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSelect = (e) => {
+  const handleSelectChange = (e) => {
     const { value } = e.target;
     setEmpInfo({ ...empInfo, heureId: value });
   };
@@ -58,8 +58,15 @@ export default function Enregistrement() {
 
   return (
     <div>
-      <InsertEmp handleChange={handleChange} data={empInfo} onSubmit={onSubmit}>
-        <DropDownEmployes handleChange={handleSelect} data={employeHeure} />
+      <InsertEmp
+        handleChange={handleInputChange}
+        data={empInfo}
+        onSubmit={onSubmit}
+      >
+        <DropDownEmployes
+          handleChange={handleSelectChange}
+          data={employeHeure}
+        />
       </InsertEmp>
     </div>
   );
