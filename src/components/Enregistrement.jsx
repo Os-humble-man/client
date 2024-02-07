@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import InsertEmp from "./InsertEmp";
 import DropDownEmployes from "./DropDownEmployes";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Enregistrement() {
@@ -35,8 +35,6 @@ export default function Enregistrement() {
     setEmpInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const history = useHistory();
-
   const handleSelect = (e) => {
     const { value } = e.target;
     setEmpInfo({ ...empInfo, heureId: value });
@@ -55,7 +53,7 @@ export default function Enregistrement() {
     } catch (error) {
       console.error("Error submitting form:", error);
     }
-    history.push("/nouvelle-page");
+    window.location.reload();
   };
 
   return (
